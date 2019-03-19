@@ -7,6 +7,9 @@
 
 #include "Terreno.h"
 
+Terreno::Terreno():Imovel(){
+
+}
 Terreno::Terreno(double valor, int tipoOferta, Endereco endereco, double area) : Imovel(valor, tipoOferta, endereco){
 	setArea(area);
 }

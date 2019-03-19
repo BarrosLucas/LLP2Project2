@@ -6,29 +6,47 @@
  */
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 #include "Endereco.h"
 #include "Terreno.h"
 #include "Casa.h"
 #include "Apartamento.h"
+#include "Instanceof.h"
+
+#include "GerenteDePersistencia.h"
 
 using namespace std;
 
 int main(){
-	string teste;
-	ofstream arquivo;
-	arquivo.open("persistencia/teste.txt");
+	std::vector<Imovel*> imoveis;
+
+	GerenteDePersistencia * adm = new GerenteDePersistencia();
+	Instanceof * instanceof = new Instanceof();
+
+	imoveis = adm->recuperarListaImoveis();
 
 
-	Endereco *endereco = new Endereco("Rua 1", 1, "Bairro 1", "Cidade 1", "11111-111");
-
-
-	Terreno *terreno = new Terreno(150.5, 0, *endereco, 13.4);
-	Casa *casa = new Casa(20.3, 1, *endereco, 3, 1, 4, 5);
-	Apartamento *apartamento = new Apartamento(14.7, 1, *endereco, "Aqui", 2, 13, 5, 110, 3);
-
-	arquivo << terreno->toFileType() << endl;
-	arquivo << casa->toFileType() << endl;
-	arquivo << apartamento->toFileType() << endl;
+	for(Imovel* imovel : imoveis){
+		switch(instanceof->instanceof(imovel)){
+		case 0:
+		{
+			Casa *casa = dynamic_cast<Casa*>(imovel);
+			cout << casa->getDescricao() << endl;
+			break;
+		}
+		case 1:
+			{
+				Apartamento *apartamento = dynamic_cast<Apartamento*>(imovel);
+				cout << apartamento->getDescricao() << endl;
+				break;
+			}
+		case 2:{
+			Terreno *terreno = dynamic_cast<Terreno*>(imovel);
+			cout << terreno->getDescricao() << endl;
+			break;
+		}
+		}
+	}
 
 }

@@ -8,6 +8,9 @@
 #include "Casa.h"
 
 
+Casa::Casa() : Imovel(){
+
+}
 Casa::Casa(double valor, int tipoOferta, Endereco endereco, int numPavimentos, int numQuartos, double areaTerreno, double areaConstruida): Imovel(valor, tipoOferta, endereco){
 	setNumPavimentos(numPavimentos);
 	setNumQuartos(numQuartos);

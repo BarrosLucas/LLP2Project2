@@ -96,7 +96,7 @@ std::string Endereco::toFileType(){
 	retorno.append(this->getCidade());
 	retorno.append("\",\n");
 
-	retorno.append("\"cep:\":\"");
+	retorno.append("\"cep\":\"");
 	retorno.append(this->getCep());
 	retorno.append("\"\n");
 

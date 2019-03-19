@@ -12,6 +12,7 @@
 
 class Terreno : public Imovel{
 public:
+	Terreno();
 	Terreno(double valor, int tipoOferta, Endereco endereco, double area);
 
 	double getArea();

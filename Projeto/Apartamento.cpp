@@ -7,7 +7,9 @@
 
 #include "Apartamento.h"
 
+Apartamento::Apartamento():Imovel(){
 
+}
 Apartamento::Apartamento(double valor, int tipoOferta, Endereco endereco, std::string posicao, int numQuartos, double valorCondominio, int vagasGaragem, double area, int andar):Imovel(valor, tipoOferta, endereco){
 	setPosicao(posicao);
 	setNumQuartos(numQuartos);

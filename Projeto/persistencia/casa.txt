@@ -1,0 +1,32 @@
+{
+"tipoOferta":"1",
+"valor":"20.300000",
+"endereco":
+{
+"logradouro":"Rua 1",
+"numero":"1",
+"bairro":"Bairro 1",
+"cidade":"Cidade 1",
+"cep":"11111-111"
+},
+"numPavimentos":"3",
+"numQuartos":"1",
+"areaTerreno":"4.000000",
+"areaConstruida":"5.000000"
+}
+{
+"tipoOferta":"1",
+"valor":"27",
+"endereco":
+{
+"logradouro":"Rua 2",
+"numero":"2",
+"bairro":"Bairro 2",
+"cidade":"Cidade 2",
+"cep":"22222-222"
+},
+"numPavimentos":"5",
+"numQuartos":"4",
+"areaTerreno":"9.000000",
+"areaConstruida":"6.500000"
+}

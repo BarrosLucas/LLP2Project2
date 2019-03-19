@@ -13,6 +13,7 @@
 
 class Apartamento : public Imovel{
 public:
+	Apartamento();
 	Apartamento(double valor, int tipoOferta, Endereco endereco, std::string posicao, int numQuartos, double valorCondominio, int vagasGaragem, double area, int andar);
 
 	std::string getPosicao();

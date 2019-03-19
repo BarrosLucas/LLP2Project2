@@ -7,6 +7,9 @@
 
 #include "Imovel.h"
 
+Imovel::Imovel(){
+
+}
 Imovel::Imovel(double valor, int tipoOferta, Endereco endereco){
 	setValor(valor);
 	setTipoOferta(tipoOferta);

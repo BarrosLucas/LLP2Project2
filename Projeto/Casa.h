@@ -13,6 +13,8 @@
 class Casa : public Imovel{
 public:
 	Casa(double valor, int tipoOferta, Endereco endereco, int numPavimentos, int numQuartos, double areaTerreno, double areaConstruida);
+	Casa();
+
 
 	int getNumPavimentos();
 	void setNumPavimentos(int numPavimentos);
