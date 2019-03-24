@@ -5,7 +5,7 @@
 {
 "logradouro":"Rua 1",
 "numero":"1",
-"bairro":"Bairro 1",
+"bairro":"Bâirro 1",
 "cidade":"Cidade 1",
 "cep":"11111-111"
 },

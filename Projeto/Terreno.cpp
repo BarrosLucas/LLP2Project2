@@ -10,7 +10,7 @@
 Terreno::Terreno():Imovel(){
 
 }
-Terreno::Terreno(double valor, int tipoOferta, Endereco endereco, double area) : Imovel(valor, tipoOferta, endereco){
+Terreno::Terreno(std::string titulo, double valor, int tipoOferta, Endereco endereco, double area) : Imovel(titulo, valor, tipoOferta, endereco){
 	setArea(area);
 }
 
@@ -37,6 +37,9 @@ std::string Terreno::toFileType(){
 	std::string retorno;
 
 	retorno.append("{\n");
+	retorno.append("\"titulo\":\"");
+	retorno.append(getTitulo());
+	retorno.append("\",\n");
 	retorno.append("\"tipoOferta\":\"");
 	retorno.append(std::to_string(getTipoOferta()));
 	retorno.append("\",\n");

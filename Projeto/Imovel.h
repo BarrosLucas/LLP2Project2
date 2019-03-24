@@ -16,14 +16,17 @@
 class Imovel {
 public:
 	Imovel();
-	Imovel(double valor, int tipoOferta, Endereco endereco);
+	Imovel(std::string titulo, double valor, int tipoOferta, Endereco endereco);
 
+	std::string getTitulo();
+	void setTitulo(std::string titulo);
 	double getValor();
 	void setValor(double valor);
 	int getTipoOferta();
 	void setTipoOferta(int tipoOferta);
 	Endereco getEndereco();
 	void setEndereco(Endereco endereco);
+
 	std::string getDescricao();
 
 	//virtual std::string toFileType()=0;
@@ -32,6 +35,7 @@ public:
 	virtual ~Imovel();
 
 private:
+	std::string titulo;
 	double valor;
 	int tipoOferta;
 	Endereco endereco;

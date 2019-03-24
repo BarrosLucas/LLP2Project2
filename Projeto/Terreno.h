@@ -13,7 +13,7 @@
 class Terreno : public Imovel{
 public:
 	Terreno();
-	Terreno(double valor, int tipoOferta, Endereco endereco, double area);
+	Terreno(std::string titulo, double valor, int tipoOferta, Endereco endereco, double area);
 
 	double getArea();
 	void setArea(double area);

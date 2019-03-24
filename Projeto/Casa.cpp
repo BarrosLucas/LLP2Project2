@@ -11,7 +11,7 @@
 Casa::Casa() : Imovel(){
 
 }
-Casa::Casa(double valor, int tipoOferta, Endereco endereco, int numPavimentos, int numQuartos, double areaTerreno, double areaConstruida): Imovel(valor, tipoOferta, endereco){
+Casa::Casa(std::string titulo, double valor, int tipoOferta, Endereco endereco, int numPavimentos, int numQuartos, double areaTerreno, double areaConstruida): Imovel(titulo, valor, tipoOferta, endereco){
 	setNumPavimentos(numPavimentos);
 	setNumQuartos(numQuartos);
 	setAreaTerreno(areaTerreno);
@@ -80,6 +80,9 @@ std::string Casa::toFileType(){
 	std::string retorno;
 
 	retorno.append("{\n");
+	retorno.append("\"titulo\":\"");
+	retorno.append(getTitulo());
+	retorno.append("\",\n");
 	retorno.append("\"tipoOferta\":\"");
 	retorno.append(std::to_string(getTipoOferta()));
 	retorno.append("\",\n");

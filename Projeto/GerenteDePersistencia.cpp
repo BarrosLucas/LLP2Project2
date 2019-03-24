@@ -47,8 +47,8 @@ std::vector<Imovel*> GerenteDePersistencia::lerCasas(){
 	if(arqCasa.is_open()){
 		while(getline(arqCasa,linha)){
 			for(int i = 0; i < linha.length();i++){
-				std::cout << "Comando: " << comando << std::endl;
-				std::cout << "Valor: " << valor << std::endl;
+				//std::cout << "Comando: " << comando << std::endl;
+				//std::cout << "Valor: " << valor << std::endl;
 				if(contAspas == 0){
 					if(linha[i]=='{'){
 						contChaves ++;
@@ -92,6 +92,8 @@ std::vector<Imovel*> GerenteDePersistencia::lerCasas(){
 								end->setCidade(valor);
 							}else if(comando == "cep"){
 								end->setCep(valor);
+							}else if(comando == "titulo"){
+								casa->setTitulo(valor);
 							}
 							comando = "";
 							valor = "";
@@ -127,8 +129,8 @@ std::vector<Imovel*> GerenteDePersistencia::lerApartamentos(){
 	if(arqApartamento.is_open()){
 		while(getline(arqApartamento,linha)){
 			for(int i = 0; i < linha.length();i++){
-				std::cout << "Comando: " << comando << std::endl;
-				std::cout << "Valor: " << valor << std::endl;
+				//std::cout << "Comando: " << comando << std::endl;
+				//std::cout << "Valor: " << valor << std::endl;
 				if(contAspas == 0){
 					if(linha[i]=='{'){
 						contChaves ++;
@@ -176,6 +178,8 @@ std::vector<Imovel*> GerenteDePersistencia::lerApartamentos(){
 								end->setCidade(valor);
 							}else if(comando == "cep"){
 								end->setCep(valor);
+							}else if(comando == "titulo"){
+								apartamento->setTitulo(valor);
 							}
 							comando = "";
 							valor = "";
@@ -211,8 +215,8 @@ std::vector<Imovel*> GerenteDePersistencia::lerTerrenos(){
 	if(arqTerreno.is_open()){
 		while(getline(arqTerreno,linha)){
 			for(int i = 0; i < linha.length();i++){
-				std::cout << "Comando: " << comando << std::endl;
-				std::cout << "Valor: " << valor << std::endl;
+				//std::cout << "Comando: " << comando << std::endl;
+				//std::cout << "Valor: " << valor << std::endl;
 				if(contAspas == 0){
 					if(linha[i]=='{'){
 						contChaves ++;
@@ -250,6 +254,8 @@ std::vector<Imovel*> GerenteDePersistencia::lerTerrenos(){
 								end->setCidade(valor);
 							}else if(comando == "cep"){
 								end->setCep(valor);
+							}else if(comando == "titulo"){
+								terreno->setTitulo(valor);
 							}
 							comando = "";
 							valor = "";

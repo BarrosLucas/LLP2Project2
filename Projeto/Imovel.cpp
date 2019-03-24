@@ -10,10 +10,19 @@
 Imovel::Imovel(){
 
 }
-Imovel::Imovel(double valor, int tipoOferta, Endereco endereco){
+Imovel::Imovel(std::string titulo, double valor, int tipoOferta, Endereco endereco){
 	setValor(valor);
 	setTipoOferta(tipoOferta);
 	setEndereco(endereco);
+	setTitulo(titulo);
+}
+
+std::string Imovel::getTitulo(){
+	return titulo;
+}
+
+void Imovel::setTitulo(std::string titulo){
+	this->titulo = titulo;
 }
 
 double Imovel::getValor(){
@@ -36,6 +45,9 @@ void Imovel::setEndereco(Endereco endereco){
 }
 std::string Imovel::getDescricao(){
 	std::string descricao;
+	descricao.append("Título: ");
+	descricao.append(getTitulo());
+	descricao.append("\n");
 	descricao.append("Tipo de Oferta: ");
 	descricao.append((getTipoOferta()==IMOVEL_PARA_ALUGAR)? "ALUGAR\n" : "VENDER\n");
 	descricao.append("Valor: R$ ");

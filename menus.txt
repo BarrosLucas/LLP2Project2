@@ -1,0 +1,83 @@
+//**********************************MENU PRINCIPAL**********************************//
+1 - CADASTRAR IMOVEIS
+2 - LISTAR IMOVEIS
+3 - EDITAR IMOVEIS
+4 - REMOVER IMOVEIS
+QUALQUER TECLA - SAIR
+
+
+//**********************************MENU PRINCIPAL - CADASTRAR IMOVEIS**********************************//
+1 - CADASTRAR CASA
+2 - CADASTRAR APARTAMENTO
+3 - CADASTRAR TERRENO
+QUALQUER TECLA - CANCELAR
+
+
+
+//**********************************MENU PRINCIPAL - CADASTRAR IMOVEIS - CADASTRAR CASA**********************************//
+1 - PARA ALUGAR?
+2 - PARA VENDER?
+VALOR? R$
+LOGRADOURO: 
+NUMERO: 
+BAIRRO: 
+CIDADE: 
+CEP (COM MASCARA): 
+NUMERO DE PAVIMENTOS: 
+NUMERO DE QUARTOS: 
+AREA DO TERRENO: 
+AREA CONSTRUIDA: 
+
+//**********************************MENU PRINCIPAL - CADASTRAR IMOVEIS - CADASTRAR APARTAMENTO**********************************//
+1 - PARA ALUGAR?
+2 - PARA VENDER?
+VALOR? R$
+LOGRADOURO: 
+NUMERO: 
+BAIRRO: 
+CIDADE: 
+CEP (COM MASCARA): 
+POSICAO:
+NUMERO DE QUARTOS: 
+VALOR CONDOMINIO: 
+VAGAS NA GARAGEM: 
+AREA: 
+ANDAR: 
+
+//**********************************MENU PRINCIPAL - CADASTRAR IMOVEIS - CADASTRAR TERRENO**********************************//
+1 - PARA ALUGAR?
+2 - PARA VENDER?
+VALOR? R$
+LOGRADOURO: 
+NUMERO: 
+BAIRRO: 
+CIDADE: 
+CEP (COM MASCARA):  
+AREA DO TERRENO: 
+
+
+//**********************************MENU PRINCIPAL - LISTAR IMOVEIS**********************************//
+1 - LISTAR TODOS
+2 - INCLUIR FILTRO
+
+//**********************************MENU PRINCIPAL - LISTAR IMOVEIS - INCLUIR FILTROS**********************************//
+1 - FILTRAR POR PREÇO
+1.1 - SIM
+1.2 - NÃO
+2 - FILTRAR POR BAIRRO
+2.1 - SIM
+2.2 - NÃO
+3 - FILTRAR POR CIDADE
+3.1 - SIM
+3.2 - NÃO
+4 - FILTRAR POR TITULO
+4.1 - SIM
+4.2 - NÃO
+5 - FILTRAR POR TIPO
+5.1 - SIM
+5.2 - NÃO
+6.0 - FILTRAR POR CATEGORIA
+6.1 - SIM
+6.2 - NÃO
+7 - MOSTRAR
+QUALQUER TECLA - CANCELAR

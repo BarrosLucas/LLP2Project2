@@ -10,7 +10,7 @@
 Apartamento::Apartamento():Imovel(){
 
 }
-Apartamento::Apartamento(double valor, int tipoOferta, Endereco endereco, std::string posicao, int numQuartos, double valorCondominio, int vagasGaragem, double area, int andar):Imovel(valor, tipoOferta, endereco){
+Apartamento::Apartamento(std::string titulo, double valor, int tipoOferta, Endereco endereco, std::string posicao, int numQuartos, double valorCondominio, int vagasGaragem, double area, int andar):Imovel(titulo, valor, tipoOferta, endereco){
 	setPosicao(posicao);
 	setNumQuartos(numQuartos);
 	setValorCondominio(valorCondominio);
@@ -104,6 +104,9 @@ std::string Apartamento::toFileType(){
 	std::string retorno;
 
 	retorno.append("{\n");
+	retorno.append("\"titulo\":\"");
+	retorno.append(getTitulo());
+	retorno.append("\",\n");
 	retorno.append("\"tipoOferta\":\"");
 	retorno.append(std::to_string(getTipoOferta()));
 	retorno.append("\",\n");

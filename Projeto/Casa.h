@@ -12,7 +12,7 @@
 
 class Casa : public Imovel{
 public:
-	Casa(double valor, int tipoOferta, Endereco endereco, int numPavimentos, int numQuartos, double areaTerreno, double areaConstruida);
+	Casa(std::string titulo, double valor, int tipoOferta, Endereco endereco, int numPavimentos, int numQuartos, double areaTerreno, double areaConstruida);
 	Casa();
 
 

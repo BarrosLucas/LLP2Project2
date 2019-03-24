@@ -22,7 +22,7 @@
 "logradouro":"Rua 2",
 "numero":"2",
 "bairro":"Bairro 2",
-"cidade":"Cidade 2",
+"cidade":"Cîdade 2",
 "cep":"22222-222"
 },
 "numPavimentos":"5",
