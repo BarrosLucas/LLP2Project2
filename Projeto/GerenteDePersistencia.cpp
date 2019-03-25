@@ -30,6 +30,26 @@ std::vector<Imovel*> GerenteDePersistencia::recuperarListaImoveis(){
 	return retorno;
 }
 
+/*std::vector<Imovel*> GerenteDePersistencia::recuperarListaImoveis(){
+	std::vector<Imovel*> retorno;
+	Endereco *endereco = new Endereco("RUA",100,"BAIRRO","CIDADE","11111-111");
+	for(int i = 0; i < 15; i++){
+		if(i%6==0){
+			//(std::string titulo, double valor, int tipoOferta, Endereco endereco, double area)
+			Terreno *terreno = new Terreno("TERRENO "+i,((i*15)/10),1,*endereco,((i*15)/10));
+			retorno.push_back(terreno);
+		}else if(i%3==0 || i%2 == 0){
+			Apartamento *apartamento = new Apartamento("APARTAMENTO "+i,i*10,1,*endereco,"AQUI "+i,i*3,i*10,i*3,((i*15)/10),i);
+			retorno.push_back(apartamento);
+		}else{
+			Casa *casa = new Casa("CASA "+i,((i*15)/10),0,*endereco,i*3,i,((i*15)/5),((i*15)/10));
+			retorno.push_back(casa);
+		}
+	}
+
+	return retorno;
+}
+*/
 std::vector<Imovel*> GerenteDePersistencia::lerCasas(){
 	std::vector<Imovel*> retorno;
 

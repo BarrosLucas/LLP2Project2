@@ -18,7 +18,7 @@ class SistemaImobiliaria {
 public:
 	SistemaImobiliaria();
 
-	bool cadastraImovel(Imovel imovel);
+	bool cadastraImovel(Imovel *imovel);
 	std::vector<Imovel*> getImoveis();
 	std::vector<std::string> getDescricaoImoveis();
 	std::vector<Imovel*> getImoveisPorTipo(std::vector<Imovel*> imoveis, int tipo);
@@ -27,7 +27,8 @@ public:
 	std::vector<Imovel*> getImoveisPorCidade(std::vector<Imovel*> imoveis, std::string cidade);
 	std::vector<Imovel*> getImoveisPorPreco(std::vector<Imovel*> imoveis, double minValue, double maxValue);
 	std::vector<Imovel*> getImoveisPorTitulo(std::vector<Imovel*> imoveis, std::string titulo);
-
+	bool atualizarImovel(Imovel *imovel, int *index);
+	bool removerImovel(int *index);
 
 	virtual ~SistemaImobiliaria();
 

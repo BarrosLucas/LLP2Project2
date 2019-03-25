@@ -25,15 +25,17 @@ void mostrarMenuPrincipal(SistemaImobiliaria *sistema);
 void pedirTipoDeImovel(int *tipoDeImovel);
 void pedirTipoDeOferta(int *tipoDeOferta);
 void pedirEndereco(std::string *logradouro, int *numero, std::string *bairro, std::string *cidade, std::string *cep);
-void preencherEndereco(Endereco *endereco);
-void pedirInformacoesCasa(std::string *titulo, double *valor, int *tipoOferta, Endereco *endereco, int *numPavimentos, int *numQuartos, double *areaTerreno, double *areaConstruida);
-void pedirInformacoesApartamento(std::string *titulo, double *valor, int *tipoOferta, Endereco *endereco, std::string *posicao, int *numQuartos, double *valorCondominio, int *vagasGaragem, double *area, int *andar);
-void pedirInformacoesTerreno(std::string * titulo, double * valor, int * tipoOferta, Endereco *endereco, double *area);
+Endereco* preencherEndereco(Endereco *endereco);
+Endereco* pedirInformacoesCasa(std::string *titulo, double *valor, int *tipoOferta, Endereco *endereco, int *numPavimentos, int *numQuartos, double *areaTerreno, double *areaConstruida);
+Endereco* pedirInformacoesApartamento(std::string *titulo, double *valor, int *tipoOferta, Endereco *endereco, std::string *posicao, int *numQuartos, double *valorCondominio, int *vagasGaragem, double *area, int *andar);
+Endereco* pedirInformacoesTerreno(std::string * titulo, double * valor, int * tipoOferta, Endereco *endereco, double *area);
 bool cadastrarCasa(SistemaImobiliaria *sistema);
 bool cadastrarApartamento(SistemaImobiliaria *sistema);
 bool cadastrarTerreno(SistemaImobiliaria *sistema);
 void listarImoveis(SistemaImobiliaria *sistema);
 void incluirFiltro(int * escolha);
+bool alterarImovel(SistemaImobiliaria *sistema);
+bool removerImovel(SistemaImobiliaria *sistema);
 
 int main(){
 	std::vector<Imovel*> todos_imoveis;
@@ -55,17 +57,19 @@ void mostrarMenuPrincipal(SistemaImobiliaria *sistema){
 	cout << "4 - REMOVER IMOVEIS " << endl;
 	cout << "OUTRA TECLA - SAIR" << endl;
 	cout << "\nESCOLHA: ";
+	//escolha = getch();
 	cin >> escolha;
 	fflush(stdin);
 	switch(escolha){
 	case '1': //CADASTRAR IMOVEL
 	{
+		bool resultado = false;
 		pedirTipoDeImovel(&select);
 		switch(select){
 		case 1: //CADASTRAR CASA
 		{
-			cadastrarCasa(sistema);
-			cout << "CADASTRO REALIZADO COM SUCESSO!" << endl;
+			resultado = cadastrarCasa(sistema);
+			(resultado)? cout << "CADASTRO REALIZADO COM SUCESSO!" << endl : cout << "FALHA AO EFETUAR O CADASTRO!" << endl;
 			Sleep(3000);
 			cout << "\n\n\n";
 			mostrarMenuPrincipal(sistema);
@@ -73,8 +77,8 @@ void mostrarMenuPrincipal(SistemaImobiliaria *sistema){
 		}
 		case 2: //CADASTRAR APARTAMENTO
 		{
-			cadastrarApartamento(sistema);
-			cout << "CADASTRO REALIZADO COM SUCESSO!" << endl;
+			resultado = cadastrarApartamento(sistema);
+			(resultado)? cout << "CADASTRO REALIZADO COM SUCESSO!" << endl : cout << "FALHA AO EFETUAR O CADASTRO!" << endl;
 			Sleep(3000);
 			cout << "\n\n\n";
 			mostrarMenuPrincipal(sistema);
@@ -82,8 +86,8 @@ void mostrarMenuPrincipal(SistemaImobiliaria *sistema){
 		}
 		case 3: //CADASTRAR TERRENO
 		{
-			cadastrarTerreno(sistema);
-			cout << "CADASTRO REALIZADO COM SUCESSO!" << endl;
+			resultado = cadastrarTerreno(sistema);
+			(resultado)? cout << "CADASTRO REALIZADO COM SUCESSO!" << endl : cout << "FALHA AO EFETUAR O CADASTRO!" << endl;
 			Sleep(3000);
 			cout << "\n\n\n";
 			mostrarMenuPrincipal(sistema);
@@ -95,6 +99,29 @@ void mostrarMenuPrincipal(SistemaImobiliaria *sistema){
 	case '2': //LISTAR
 	{
 		listarImoveis(sistema);
+		break;
+	}
+	case '3': //ALTERAR
+	{
+		if(alterarImovel(sistema)){
+			cout << "ATUALIZACAO EFETUADA COM SUCESSO!" << endl;
+		}else{
+			cout << "ATUALIZACAO NAO PODE SER EFETUADA" << endl;
+		}
+		Sleep(3000);
+		mostrarMenuPrincipal(sistema);
+		break;
+	}
+	case '4': //REMOVER
+	{
+		if(removerImovel(sistema)){
+			cout << "REMOCAO EFETUADA COM SUCESSO!" << endl;
+		}else{
+			cout << "REMOCAO NAO PODE SER EFETUADA" << endl;
+		}
+		Sleep(3000);
+		mostrarMenuPrincipal(sistema);
+		break;
 	}
 	}
 	Sleep(10000);
@@ -105,38 +132,39 @@ bool cadastrarTerreno(SistemaImobiliaria *sistema){
 	std::string titulo;
 	double valor;
 	int tipoOferta;
-	Endereco endereco;
+	Endereco *endereco;
 	double area;
 
-	pedirInformacoesTerreno(&titulo,&valor,&tipoOferta,&endereco,&area);
+	endereco = pedirInformacoesTerreno(&titulo,&valor,&tipoOferta,endereco,&area);
 
-	Terreno *terreno = new Terreno(titulo,valor,tipoOferta,endereco,area);
-	sistema ->cadastraImovel(*terreno);
+	Terreno *terreno = new Terreno(titulo,valor,tipoOferta,*endereco,area);
+	sistema ->cadastraImovel(terreno);
 
 	return true;
 }
 
 bool cadastrarCasa(SistemaImobiliaria *sistema){
+	bool retorno = false;
 	std::string titulo;
 	double valor;
 	int tipoOferta;
-	Endereco endereco;
+	Endereco *endereco;
 	int numPavimentos;
 	int numQuartos;
 	double areaTerreno;
 	double areaConstruida;
 
-	pedirInformacoesCasa(&titulo,&valor,&tipoOferta,&endereco,&numPavimentos,&numQuartos,&areaTerreno,&areaConstruida);
-	Casa *casa = new Casa(titulo,valor,(tipoOferta-1),endereco,numPavimentos,numQuartos,areaTerreno,areaConstruida);
-	sistema->cadastraImovel(*casa);
+	endereco = pedirInformacoesCasa(&titulo,&valor,&tipoOferta,endereco,&numPavimentos,&numQuartos,&areaTerreno,&areaConstruida);
+	Casa *casa = new Casa(titulo,valor,(tipoOferta-1),*endereco,numPavimentos,numQuartos,areaTerreno,areaConstruida);
+	retorno = sistema->cadastraImovel(casa);
 
-	return true;
+	return retorno;
 }
 bool cadastrarApartamento(SistemaImobiliaria *sistema){
 	std::string titulo;
 	double valor;
 	int tipoOferta;
-	Endereco endereco;
+	Endereco *endereco;
 	std::string posicao;
 	int numQuartos;
 	double valorCondominio;
@@ -144,15 +172,15 @@ bool cadastrarApartamento(SistemaImobiliaria *sistema){
 	double area;
 	int andar;
 
-	pedirInformacoesApartamento(&titulo,&valor,&tipoOferta,&endereco,&posicao,&numQuartos,&valorCondominio,&vagasGaragem,&area,&andar);
-	Apartamento *apartamento = new Apartamento(titulo,valor,tipoOferta,endereco,posicao,numQuartos,valorCondominio,vagasGaragem,area,andar);
+	endereco = pedirInformacoesApartamento(&titulo,&valor,&tipoOferta,endereco,&posicao,&numQuartos,&valorCondominio,&vagasGaragem,&area,&andar);
+	Apartamento *apartamento = new Apartamento(titulo,valor,tipoOferta,*endereco,posicao,numQuartos,valorCondominio,vagasGaragem,area,andar);
 
-	sistema->cadastraImovel(*apartamento);
+	sistema->cadastraImovel(apartamento);
 
 	return true;
 }
 
-void pedirInformacoesTerreno(std::string * titulo, double * valor, int * tipoOferta, Endereco *endereco, double *area){
+Endereco * pedirInformacoesTerreno(std::string * titulo, double * valor, int * tipoOferta, Endereco *endereco, double *area){
 	fflush(stdin);
 
 	cout << "\n\nTITULO: ";
@@ -169,7 +197,7 @@ void pedirInformacoesTerreno(std::string * titulo, double * valor, int * tipoOfe
 
 	fflush(stdin);
 
-	preencherEndereco(endereco);
+	endereco = preencherEndereco(endereco);
 
 	fflush(stdin);
 
@@ -177,9 +205,11 @@ void pedirInformacoesTerreno(std::string * titulo, double * valor, int * tipoOfe
 	cin >> *area;
 
 	fflush(stdin);
+
+	return endereco;
 }
 
-void pedirInformacoesApartamento(std::string *titulo, double *valor, int *tipoOferta, Endereco *endereco, std::string *posicao, int *numQuartos, double *valorCondominio, int *vagasGaragem, double *area, int *andar){
+Endereco* pedirInformacoesApartamento(std::string *titulo, double *valor, int *tipoOferta, Endereco *endereco, std::string *posicao, int *numQuartos, double *valorCondominio, int *vagasGaragem, double *area, int *andar){
 	fflush(stdin);
 
 	cout << "\n\nTITULO: ";
@@ -196,7 +226,7 @@ void pedirInformacoesApartamento(std::string *titulo, double *valor, int *tipoOf
 
 	fflush(stdin);
 
-	preencherEndereco(endereco);
+	endereco = preencherEndereco(endereco);
 
 	fflush(stdin);
 
@@ -229,11 +259,17 @@ void pedirInformacoesApartamento(std::string *titulo, double *valor, int *tipoOf
 	cin >> *andar;
 
 	fflush(stdin);
+
+	/*cout << "END.: "<<endl;
+	cout << endereco->toString() << endl;
+	Sleep(5000);*/
+
+	return endereco;
 }
 
 
 
-void pedirInformacoesCasa(std::string *titulo, double *valor, int *tipoOferta, Endereco *endereco, int *numPavimentos, int *numQuartos, double *areaTerreno, double *areaConstruida){
+Endereco* pedirInformacoesCasa(std::string *titulo, double *valor, int *tipoOferta, Endereco *endereco, int *numPavimentos, int *numQuartos, double *areaTerreno, double *areaConstruida){
 	fflush(stdin);
 	cout << "\n\nTITULO: ";
 	getline(cin,*titulo);
@@ -243,7 +279,7 @@ void pedirInformacoesCasa(std::string *titulo, double *valor, int *tipoOferta, E
 	fflush(stdin);
 	pedirTipoDeOferta(tipoOferta);
 	fflush(stdin);
-	preencherEndereco(endereco);
+	endereco = preencherEndereco(endereco);
 	fflush(stdin);
 	cout << "NUMERO DE PAVIMENTOS: ";
 	cin >> *numPavimentos;
@@ -257,9 +293,11 @@ void pedirInformacoesCasa(std::string *titulo, double *valor, int *tipoOferta, E
 	cout << "AREA CONSTRUIDA: ";
 	cin >> *areaConstruida;
 	fflush(stdin);
+
+	return endereco;
 }
 
-void preencherEndereco(Endereco *endereco){
+Endereco* preencherEndereco(Endereco *endereco){
 	std::string logradouro;
 	int numero;
 	std::string bairro;
@@ -267,8 +305,9 @@ void preencherEndereco(Endereco *endereco){
 	std::string cep;
 
 	pedirEndereco(&logradouro,&numero,&bairro,&cidade,&cep);
-
 	endereco = new Endereco(logradouro,numero,bairro,cidade,cep);
+
+	return endereco;
 }
 
 void pedirEndereco(std::string *logradouro, int *numero, std::string *bairro, std::string *cidade, std::string *cep){
@@ -313,7 +352,9 @@ void pedirTipoDeImovel(int *tipoDeImovel){
 
 void mostrarDescricoes(std::vector<Imovel*> imoveis){
 	Instanceof * instanceof = new Instanceof();
+	int cont = 0;
 	for(Imovel* imovel : imoveis){
+		cout << "- IMOVEL: " << ++cont << endl;
 		switch(instanceof->instanceof(imovel)){
 		case 0:
 		{
@@ -422,9 +463,10 @@ void listarImoveis(SistemaImobiliaria *sistema){
 			int tipo;
 			cout << "\t1 - MOSTRAR IMOVEIS PARA VENDER" << endl;
 			cout << "\t2 - MOSTRAR IMOVEIS PARA ALUGAR" << endl;
+			cout << "ESCOLHA: ";
 			cin >> tipo;
 			fflush(stdin);
-			imoveis = sistema->getImoveisPorTipo(imoveis,(tipo-1));
+			imoveis = sistema->getImoveisPorCategoria(imoveis,(tipo-1));
 		}
 
 		fflush(stdin);
@@ -444,14 +486,15 @@ void listarImoveis(SistemaImobiliaria *sistema){
 			cout << "ESCOLHA: ";
 			cin >> tipo;
 			fflush(stdin);
-			imoveis = sistema->getImoveisPorCategoria(imoveis,(tipo-1));
+			imoveis = sistema->getImoveisPorTipo(imoveis,(tipo-1));
 		}
 		mostrarDescricoes(imoveis);
-
+		break;
 	}
 	case 2: //NAO (MOSTRA TODOS)
 	{
 		mostrarDescricoes(sistema->getImoveis());
+		break;
 	}
 	}
 }
@@ -464,3 +507,94 @@ void incluirFiltro(int * escolha){
 	cin >> *escolha;
 	fflush(stdin);
 }
+
+bool removerImovel(SistemaImobiliaria *sistema){
+	//Imovel *imovel;
+	bool retorno = false;
+	int indice;
+	Instanceof *instanceof = new Instanceof();
+	vector<Imovel*> imoveis = sistema->getImoveis();
+
+	cout << "\n\nDIGITE O NUMERO DO IMOVEL QUE DESEJA REMOVER: " << endl;
+	Sleep(1000);
+	mostrarDescricoes(imoveis);
+	cout << "\nNUMERO DO IMOVEL: ";
+	cin >> indice;
+	--indice;
+
+	retorno = sistema->removerImovel(&indice);
+	//cout << "OBJETO REMOVIDO!"<<endl;
+	//cout << imovel->getDescricao() << endl;
+	//Sleep(15000);
+
+	return retorno;
+}
+
+bool alterarImovel(SistemaImobiliaria *sistema){
+	bool retorno = false;
+	int indice;
+	Instanceof *instanceof = new Instanceof();
+	vector<Imovel*> imoveis = sistema->getImoveis();
+
+	cout << "\n\nDIGITE O NUMERO DO IMOVEL QUE DESEJA ALTERAR... " << endl;
+	Sleep(1000);
+	mostrarDescricoes(imoveis);
+	cout << "\nNUMERO DO IMOVEL: ";
+	cin >> indice;
+
+	--indice;
+
+	if(indice > 0 && indice < imoveis.size()){
+		if(instanceof->instanceof(imoveis.at(indice))==CASA){
+			std::string titulo;
+			double valor;
+			int tipoOferta;
+			Endereco *endereco;
+			int numPavimentos;
+			int numQuartos;
+			double areaTerreno;
+			double areaConstruida;
+
+			endereco = pedirInformacoesCasa(&titulo,&valor,&tipoOferta,endereco,&numPavimentos,&numQuartos,&areaTerreno,&areaConstruida);
+			Casa *casa = new Casa(titulo,valor,(tipoOferta-1),*endereco,numPavimentos,numQuartos,areaTerreno,areaConstruida);
+
+			retorno = sistema->atualizarImovel(casa,&indice);
+
+		}else if(instanceof->instanceof(imoveis.at(indice))==APARTAMENTO){
+			std::string titulo;
+			double valor;
+			int tipoOferta;
+			Endereco *endereco;
+			std::string posicao;
+			int numQuartos;
+			double valorCondominio;
+			int vagasGaragem;
+			double area;
+			int andar;
+
+			endereco = pedirInformacoesApartamento(&titulo,&valor,&tipoOferta,endereco,&posicao,&numQuartos,&valorCondominio,&vagasGaragem,&area,&andar);
+			Apartamento *apartamento = new Apartamento(titulo,valor,tipoOferta,*endereco,posicao,numQuartos,valorCondominio,vagasGaragem,area,andar);
+
+			retorno = sistema->atualizarImovel(apartamento,&indice);
+
+		}else if(instanceof->instanceof(imoveis.at(indice))==TERRENO){
+			std::string titulo;
+			double valor;
+			int tipoOferta;
+			Endereco *endereco;
+			double area;
+
+			endereco = pedirInformacoesTerreno(&titulo,&valor,&tipoOferta,endereco,&area);
+			Terreno *terreno = new Terreno(titulo,valor,tipoOferta,*endereco,area);
+
+			retorno = sistema->atualizarImovel(terreno,&indice);
+		}else{
+			retorno = false;
+		}
+	}else{
+		retorno = false;
+	}
+	return retorno;
+
+}
+
