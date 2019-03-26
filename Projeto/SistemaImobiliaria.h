@@ -29,6 +29,7 @@ public:
 	std::vector<Imovel*> getImoveisPorTitulo(std::vector<Imovel*> imoveis, std::string titulo);
 	bool atualizarImovel(Imovel *imovel, int *index);
 	bool removerImovel(int *index);
+	void gravarArquivo();
 
 	virtual ~SistemaImobiliaria();
 

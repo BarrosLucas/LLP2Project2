@@ -36,10 +36,16 @@ void listarImoveis(SistemaImobiliaria *sistema);
 void incluirFiltro(int * escolha);
 bool alterarImovel(SistemaImobiliaria *sistema);
 bool removerImovel(SistemaImobiliaria *sistema);
+BOOL WINAPI CtrlHandler(DWORD fdwCtrlType);
+
+
+SistemaImobiliaria *sistema;
 
 int main(){
 	std::vector<Imovel*> todos_imoveis;
-	SistemaImobiliaria *sistema = new SistemaImobiliaria();
+	sistema = new SistemaImobiliaria();
+
+	SetConsoleCtrlHandler(CtrlHandler, TRUE);
 
 	todos_imoveis = sistema->getImoveis();
 
@@ -122,6 +128,11 @@ void mostrarMenuPrincipal(SistemaImobiliaria *sistema){
 		Sleep(3000);
 		mostrarMenuPrincipal(sistema);
 		break;
+	}
+	default:
+	{
+		sistema->gravarArquivo();
+		exit(0);
 	}
 	}
 	Sleep(10000);
@@ -598,3 +609,14 @@ bool alterarImovel(SistemaImobiliaria *sistema){
 
 }
 
+BOOL WINAPI CtrlHandler(DWORD fdwCtrlType){
+    switch (fdwCtrlType){
+        // Handle the CTRL-C signal.
+    case CTRL_CLOSE_EVENT:
+        Beep(600, 200);
+        sistema->gravarArquivo();
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}

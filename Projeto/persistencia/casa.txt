@@ -1,32 +1,17 @@
 {
-"tipoOferta":"1",
-"valor":"20.300000",
+"titulo":"CASA TESTE",
+"tipoOferta":"0",
+"valor":"123.000000",
 "endereco":
 {
-"logradouro":"Rua 1",
-"numero":"1",
-"bairro":"Bairro 1",
-"cidade":"Cidade 1",
-"cep":"11111-111"
+"logradouro":"RUA TESTE",
+"numero":"123",
+"bairro":"BAIRRO TESTE",
+"cidade":"CIDADE TESTE",
+"cep":"12345-566"
 },
-"numPavimentos":"3",
-"numQuartos":"1",
-"areaTerreno":"4.000000",
-"areaConstruida":"5.000000"
-}
-{
-"tipoOferta":"1",
-"valor":"27",
-"endereco":
-{
-"logradouro":"Rua 2",
-"numero":"2",
-"bairro":"Bairro 2",
-"cidade":"Cîdade 2",
-"cep":"22222-222"
-},
-"numPavimentos":"5",
-"numQuartos":"4",
-"areaTerreno":"9.000000",
-"areaConstruida":"6.500000"
+"numPavimentos":"4",
+"numQuartos":"2",
+"areaTerreno":"5.000000",
+"areaConstruida":"2.000000"
 }

@@ -176,6 +176,10 @@ bool SistemaImobiliaria::removerImovel(int *index){
 	return false;
 }
 
+void SistemaImobiliaria::gravarArquivo(){
+	GerenteDePersistencia * adm = new GerenteDePersistencia();
+	adm->salvarListaImoveis(this->imoveis);
+}
 SistemaImobiliaria::~SistemaImobiliaria() {
 	// TODO Auto-generated destructor stub
 }
