@@ -1,17 +1,17 @@
 {
-"titulo":"CASA TESTE",
-"tipoOferta":"0",
-"valor":"123.000000",
+"titulo":"MINHA OUTRA CASA",
+"tipoOferta":"1",
+"valor":"103.000000",
 "endereco":
 {
-"logradouro":"RUA TESTE",
-"numero":"123",
-"bairro":"BAIRRO TESTE",
-"cidade":"CIDADE TESTE",
-"cep":"12345-566"
+"logradouro":"RUA 1",
+"numero":"1",
+"bairro":"BAIRRO 1",
+"cidade":"CIDADE 1",
+"cep":"11111-111"
 },
-"numPavimentos":"4",
-"numQuartos":"2",
-"areaTerreno":"5.000000",
-"areaConstruida":"2.000000"
+"numPavimentos":"20",
+"numQuartos":"11",
+"areaTerreno":"11.000000",
+"areaConstruida":"10.000000"
 }

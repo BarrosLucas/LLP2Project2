@@ -134,7 +134,7 @@ std::vector<Imovel*> SistemaImobiliaria::getImoveisPorTitulo(std::vector<Imovel*
 
 }
 bool SistemaImobiliaria::atualizarImovel(Imovel *imovel,int *index){
-	if(*index > 0 && *index < imoveis.size()){
+	if(*index >= 0 && *index < imoveis.size()){
 		if(imovel->getEndereco().getBairro().length()>0 &&
 				imovel->getEndereco().getCep().length()==9 &&
 				imovel->getEndereco().getCidade().length()>0 &&
@@ -169,7 +169,7 @@ bool SistemaImobiliaria::atualizarImovel(Imovel *imovel,int *index){
 	return false;
 }
 bool SistemaImobiliaria::removerImovel(int *index){
-	if(*index > 0 && *index < imoveis.size()){
+	if(*index >= 0 && *index < imoveis.size()){
 		imoveis.erase(imoveis.begin()+*index);
 		return true;
 	}

@@ -555,7 +555,7 @@ bool alterarImovel(SistemaImobiliaria *sistema){
 
 	--indice;
 
-	if(indice > 0 && indice < imoveis.size()){
+	if(indice >= 0 && indice < imoveis.size()){
 		if(instanceof->instanceof(imoveis.at(indice))==CASA){
 			std::string titulo;
 			double valor;
