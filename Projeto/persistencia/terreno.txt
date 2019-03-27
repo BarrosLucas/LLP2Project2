@@ -1,0 +1,14 @@
+{
+"titulo":"NOVO TITULO",
+"tipoOferta":"0",
+"valor":"444.000000",
+"endereco":
+{
+"logradouro":"RUA NOVA",
+"numero":"5",
+"bairro":"BAIRRO NOVO",
+"cidade":"CIDADE NOVO",
+"cep":"44444-444"
+},
+"area":"9.000000"
+}

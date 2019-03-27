@@ -16,6 +16,7 @@ public:
 	ManipuladorString();
 
 	bool stringsCombinam(std::string string1, std::string string2);
+	std::string deixarMaisculo(std::string texto);
 	char temAcento(std::string caractere);
 	std::string retirarAcento(std::string texto);
 

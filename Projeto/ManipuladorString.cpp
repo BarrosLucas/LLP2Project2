@@ -14,22 +14,23 @@ ManipuladorString::ManipuladorString() {
 }
 
 bool ManipuladorString::stringsCombinam(std::string string1, std::string string2){
-	string1 = retirarAcento(string1);
-	string2 = retirarAcento(string2);
+	string1 = deixarMaisculo(string1);
+	string2 = deixarMaisculo(string2);
 
 //	std::cout << string1.substr(0,string1.length()) << " == " << string2.substr(0,string1.length()) << (string1.substr(0,string1.length())==string2.substr(0,string1.length())) << std::endl;
 
-	if(string1.length()<string2.length()){
+	if(string1.length()<=string2.length()){
 		if(string1.substr(0,string1.length())==string2.substr(0,string1.length())){
 			return true;
 		}
 		return false;
-	}else{
+	}/*else{
 		if(string1.substr(0,string2.length())==string2.substr(0,string2.length())){
 			return true;
 		}
 		return false;
-	}
+	}*/
+	return false;
 }
 
 std::string ManipuladorString::retirarAcento(std::string texto){
@@ -49,6 +50,14 @@ std::string ManipuladorString::retirarAcento(std::string texto){
 
 	}
 	std::cout << "Sem acento: " << retorno << std::endl;
+	return retorno;
+}
+std::string ManipuladorString::deixarMaisculo(std::string texto){
+	std::string retorno;
+	int i;
+	for(i=0;i<texto.length();i++){
+		retorno += std::toupper(texto[i]);
+	}
 	return retorno;
 }
 

@@ -140,6 +140,7 @@ void mostrarMenuPrincipal(SistemaImobiliaria *sistema){
 }
 
 bool cadastrarTerreno(SistemaImobiliaria *sistema){
+	bool retorno = false;
 	std::string titulo;
 	double valor;
 	int tipoOferta;
@@ -148,10 +149,10 @@ bool cadastrarTerreno(SistemaImobiliaria *sistema){
 
 	endereco = pedirInformacoesTerreno(&titulo,&valor,&tipoOferta,endereco,&area);
 
-	Terreno *terreno = new Terreno(titulo,valor,tipoOferta,*endereco,area);
-	sistema ->cadastraImovel(terreno);
+	Terreno *terreno = new Terreno(titulo,valor,(tipoOferta-1),*endereco,area);
+	retorno = sistema ->cadastraImovel(terreno);
 
-	return true;
+	return retorno;
 }
 
 bool cadastrarCasa(SistemaImobiliaria *sistema){
@@ -172,6 +173,7 @@ bool cadastrarCasa(SistemaImobiliaria *sistema){
 	return retorno;
 }
 bool cadastrarApartamento(SistemaImobiliaria *sistema){
+	bool retorno = false;
 	std::string titulo;
 	double valor;
 	int tipoOferta;
@@ -184,11 +186,11 @@ bool cadastrarApartamento(SistemaImobiliaria *sistema){
 	int andar;
 
 	endereco = pedirInformacoesApartamento(&titulo,&valor,&tipoOferta,endereco,&posicao,&numQuartos,&valorCondominio,&vagasGaragem,&area,&andar);
-	Apartamento *apartamento = new Apartamento(titulo,valor,tipoOferta,*endereco,posicao,numQuartos,valorCondominio,vagasGaragem,area,andar);
+	Apartamento *apartamento = new Apartamento(titulo,valor,(tipoOferta-1),*endereco,posicao,numQuartos,valorCondominio,vagasGaragem,area,andar);
 
-	sistema->cadastraImovel(apartamento);
+	retorno = sistema->cadastraImovel(apartamento);
 
-	return true;
+	return retorno;
 }
 
 Endereco * pedirInformacoesTerreno(std::string * titulo, double * valor, int * tipoOferta, Endereco *endereco, double *area){
@@ -584,7 +586,7 @@ bool alterarImovel(SistemaImobiliaria *sistema){
 			int andar;
 
 			endereco = pedirInformacoesApartamento(&titulo,&valor,&tipoOferta,endereco,&posicao,&numQuartos,&valorCondominio,&vagasGaragem,&area,&andar);
-			Apartamento *apartamento = new Apartamento(titulo,valor,tipoOferta,*endereco,posicao,numQuartos,valorCondominio,vagasGaragem,area,andar);
+			Apartamento *apartamento = new Apartamento(titulo,valor,(tipoOferta-1),*endereco,posicao,numQuartos,valorCondominio,vagasGaragem,area,andar);
 
 			retorno = sistema->atualizarImovel(apartamento,&indice);
 
@@ -596,7 +598,7 @@ bool alterarImovel(SistemaImobiliaria *sistema){
 			double area;
 
 			endereco = pedirInformacoesTerreno(&titulo,&valor,&tipoOferta,endereco,&area);
-			Terreno *terreno = new Terreno(titulo,valor,tipoOferta,*endereco,area);
+			Terreno *terreno = new Terreno(titulo,valor,(tipoOferta-1),*endereco,area);
 
 			retorno = sistema->atualizarImovel(terreno,&indice);
 		}else{

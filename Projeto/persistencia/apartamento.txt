@@ -1,0 +1,19 @@
+{
+"titulo":"MEU APTO",
+"tipoOferta":"0",
+"valor":"100.000000",
+"endereco":
+{
+"logradouro":"RUE",
+"numero":"3",
+"bairro":"BAIRRO",
+"cidade":"CIDADE",
+"cep":"11111-111"
+},
+"posicao":"3",
+"numQuartos":"3",
+"valorCondominio":"3.000000",
+"vagasGaragem":"3",
+"area":"3.000000",
+"andar":"3"
+}

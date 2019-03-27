@@ -1,17 +1,51 @@
 {
-"titulo":"MINHA OUTRA CASA",
-"tipoOferta":"1",
-"valor":"103.000000",
+"titulo":"MINHA CASA MINHA VIDA",
+"tipoOferta":"0",
+"valor":"100.000000",
 "endereco":
 {
-"logradouro":"RUA 1",
+"logradouro":"RUE",
 "numero":"1",
-"bairro":"BAIRRO 1",
-"cidade":"CIDADE 1",
+"bairro":"BAIRRU",
+"cidade":"CIDADE",
 "cep":"11111-111"
 },
-"numPavimentos":"20",
-"numQuartos":"11",
-"areaTerreno":"11.000000",
-"areaConstruida":"10.000000"
+"numPavimentos":"2",
+"numQuartos":"2",
+"areaTerreno":"2.000000",
+"areaConstruida":"2.000000"
+}
+{
+"titulo":"MINHA CASA MINHA VIDA",
+"tipoOferta":"0",
+"valor":"100.000000",
+"endereco":
+{
+"logradouro":"RUE",
+"numero":"1",
+"bairro":"BAIRRU",
+"cidade":"CIDADE",
+"cep":"11111-111"
+},
+"numPavimentos":"1",
+"numQuartos":"1",
+"areaTerreno":"1.000000",
+"areaConstruida":"1.000000"
+}
+{
+"titulo":"minha casa",
+"tipoOferta":"0",
+"valor":"100.000000",
+"endereco":
+{
+"logradouro":"rua",
+"numero":"1",
+"bairro":"bair",
+"cidade":"cidade",
+"cep":"11111-111"
+},
+"numPavimentos":"2",
+"numQuartos":"2",
+"areaTerreno":"2.000000",
+"areaConstruida":"2.000000"
 }

@@ -83,8 +83,9 @@ std::vector<Imovel*> SistemaImobiliaria::getImoveisPorCategoria(std::vector<Imov
 }
 std::vector<Imovel*> SistemaImobiliaria::getImoveisPorBairro(std::vector<Imovel*> imoveis, std::string bairro){
 	std::vector<Imovel*> retorno;
+	ManipuladorString *manipulador = new ManipuladorString();
 	for(Imovel *imovel : imoveis){
-		if(imovel->getEndereco().getBairro()==bairro){
+		if(manipulador->stringsCombinam(imovel->getEndereco().getBairro(),bairro)){
 			retorno.push_back(imovel);
 		}
 	}
@@ -92,8 +93,9 @@ std::vector<Imovel*> SistemaImobiliaria::getImoveisPorBairro(std::vector<Imovel*
 }
 std::vector<Imovel*> SistemaImobiliaria::getImoveisPorCidade(std::vector<Imovel*> imoveis, std::string cidade){
 	std::vector<Imovel*> retorno;
+	ManipuladorString *manipulador = new ManipuladorString();
 	for(Imovel *imovel : imoveis){
-		if(imovel->getEndereco().getCidade()==cidade){
+		if(manipulador->stringsCombinam(imovel->getEndereco().getCidade(),cidade)){
 			retorno.push_back(imovel);
 		}
 	}
@@ -124,8 +126,9 @@ std::vector<Imovel*> SistemaImobiliaria::getImoveisPorPreco(std::vector<Imovel*>
 }
 std::vector<Imovel*> SistemaImobiliaria::getImoveisPorTitulo(std::vector<Imovel*> imoveis, std::string titulo){
 	std::vector<Imovel*> retorno;
+	ManipuladorString *manipulador = new ManipuladorString();
 	for(Imovel *imovel : imoveis){
-		if(imovel->getTitulo()==titulo){
+		if(manipulador->stringsCombinam(imovel->getTitulo(),titulo)){
 			retorno.push_back(imovel);
 		}
 	}
